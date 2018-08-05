@@ -29,6 +29,7 @@
   "license": "MIT",
   "dependencies": {
     "dotenv": "^6.0.0",
-    "osc": "^2.2.3"
+    "osc": "^2.2.3",
+    "random": "^2.0.12"
   }
 }
