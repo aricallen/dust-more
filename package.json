@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js",
+    "start": "node index.js",
+    "dev": "npm run stream && npm run start",
+    "stream": "muse-player -f data/muselab_recording.muse -s osc.udp://127.0.0.1:4224",
     "sketch": "node local/sketch.js",
     "test": "tape-watch tests/*.js tests/**/*.js | faucet"
   },
@@ -29,6 +30,7 @@
   "license": "MIT",
   "dependencies": {
     "dotenv": "^6.0.0",
+    "lodash": "^4.17.10",
     "osc": "^2.2.3",
     "random": "^2.0.12"
   }
