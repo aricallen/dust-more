@@ -1,4 +1,5 @@
 require('dotenv').config();
+const osc = require('osc');
 const DustMoreServer = require('./lib/server.js');
 const DustMoreClient = require('./lib/client.js');
 const MuseEngine = require('./lib/muse-engine.js');
@@ -28,9 +29,9 @@ const {
 
 const { LISTEN_PORT, SEND_PORT, HOST } = process.env;
 
+
 const engineMap = new Map();
 const client = new DustMoreClient(HOST, SEND_PORT);
-const server = new DustMoreServer(client, LISTEN_PORT);
 
 // muse engines
 engineMap.set(ADDRESS_ALPHA, new MuseEngine({ address: ADDRESS_ALPHA, client }));
@@ -75,6 +76,16 @@ engineMap.set(
   })
 );
 
+const onUpdate = (msg) => {
+  const { address, args: data } = osc.readMessage(msg);
+  if (engineMap.has(address)) {
+    engineMap.forEach((engine) => {
+      engine.update(data);
+    });
+  }
+}
+
+const server = new DustMoreServer(client, LISTEN_PORT, onUpdate);
 server.start();
 
 module.exports = { client, server, engineMap };
