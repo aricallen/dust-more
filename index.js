@@ -25,10 +25,12 @@ const {
   MAX_VELOCITY_BASS,
   MAX_VELOCITY_PADS,
   MAX_VELOCITY_SPARKLES,
+  MAX_DURATION_BASS,
+  MAX_DURATION_PADS,
+  MAX_DURATION_SPARKLES,
 } = Constants;
 
 const { LISTEN_PORT, SEND_PORT, HOST } = process.env;
-
 
 const engineMap = new Map();
 const client = new DustMoreClient(HOST, SEND_PORT);
@@ -49,6 +51,7 @@ engineMap.set(
     noteOnProbability: NOTE_ON_PROBABILITY_BASS,
     noteOffProbability: NOTE_OFF_PROBABILITY_BASS,
     maxVelocity: MAX_VELOCITY_BASS,
+    maxDuration: MAX_DURATION_BASS,
   })
 );
 engineMap.set(
@@ -61,6 +64,7 @@ engineMap.set(
     noteOnProbability: NOTE_ON_PROBABILITY_PADS,
     noteOffProbability: NOTE_OFF_PROBABILITY_PADS,
     maxVelocity: MAX_VELOCITY_PADS,
+    maxDuration: MAX_DURATION_PADS,
   })
 );
 engineMap.set(
@@ -73,6 +77,7 @@ engineMap.set(
     noteOnProbability: NOTE_ON_PROBABILITY_SPARKLES,
     noteOffProbability: NOTE_OFF_PROBABILITY_SPARKLES,
     maxVelocity: MAX_VELOCITY_SPARKLES,
+    maxDuration: MAX_DURATION_SPARKLES,
   })
 );
 
