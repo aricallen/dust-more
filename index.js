@@ -93,4 +93,12 @@ const onUpdate = (msg) => {
 const server = new DustMoreServer(client, LISTEN_PORT, onUpdate);
 server.start();
 
+process.on('exit', () => {
+  this.enginMap.forEach((engine) => engine.reset());
+});
+
+process.on('error', () => {
+  this.enginMap.forEach((engine) => engine.reset());
+});
+
 module.exports = { client, server, engineMap };

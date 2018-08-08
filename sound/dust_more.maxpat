@@ -121,13 +121,25 @@
 						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-8",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 289.0, 171.0, 89.0, 22.0 ],
+									"style" : "",
+									"text" : "print new_max"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-7",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 248.0, 171.0, 34.0, 22.0 ],
+									"patching_rect" : [ 178.0, 171.0, 85.0, 22.0 ],
 									"style" : "",
-									"text" : "print"
+									"text" : "print new_min"
 								}
 
 							}
@@ -138,7 +150,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 133.0, 120.0, 195.0, 22.0 ],
+									"patching_rect" : [ 193.0, 110.0, 195.0, 22.0 ],
 									"style" : "",
 									"text" : "route /alpha_absolute/update_max"
 								}
@@ -164,7 +176,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 133.0, 10.0, 99.0, 22.0 ],
+									"patching_rect" : [ 193.0, 11.0, 99.0, 22.0 ],
 									"style" : "",
 									"text" : "udpreceive 9001"
 								}
@@ -177,9 +189,9 @@
 									"numinlets" : 6,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 58.0, 171.0, 115.0, 22.0 ],
+									"patching_rect" : [ 58.0, 171.0, 96.0, 22.0 ],
 									"style" : "",
-									"text" : "scale -1 1 0 1"
+									"text" : "scale -1. 1. 0. 1."
 								}
 
 							}
@@ -218,7 +230,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 58.0, 447.0, 147.0, 22.0 ],
 									"style" : "",
-									"text" : "0.562297, 0.610891 2500"
+									"text" : "0.382019, 0.389906 250"
 								}
 
 							}
@@ -478,7 +490,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-7", 0 ],
+									"destination" : [ "obj-8", 0 ],
 									"order" : 0,
 									"source" : [ "obj-6", 0 ]
 								}
