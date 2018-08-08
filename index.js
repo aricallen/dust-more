@@ -93,12 +93,17 @@ const onUpdate = (msg) => {
 const server = new DustMoreServer(client, LISTEN_PORT, onUpdate);
 server.start();
 
-process.on('exit', () => {
-  this.enginMap.forEach((engine) => engine.reset());
-});
+const cleanup = () => {
+  engineMap.forEach((engine) => engine.reset());
+  console.log('cleaning up...');
+  process.exit(0);
+};
 
-process.on('error', () => {
-  this.enginMap.forEach((engine) => engine.reset());
-});
+process.on('exit', cleanup);
+process.on('error', cleanup);
+process.on('SIGINT', cleanup);
+process.on('SIGUSR1', cleanup);
+process.on('SIGUSR2', cleanup);
+process.on('uncaughtException', cleanup);
 
 module.exports = { client, server, engineMap };
