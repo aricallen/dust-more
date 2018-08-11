@@ -40,16 +40,16 @@ const engineMap = new Map();
 const client = new DustMoreClient(HOST, SEND_PORT);
 
 // muse engines
-engineMap.set(ADDRESS_GAMMA, new MuseEngine({ address: ADDRESS_GAMMA, client }));
-engineMap.set(ADDRESS_ALPHA, new MuseEngine({ address: ADDRESS_ALPHA, client }));
+// engineMap.set(ADDRESS_GAMMA, new MuseEngine({ address: ADDRESS_GAMMA, client }));
+// engineMap.set(ADDRESS_ALPHA, new MuseEngine({ address: ADDRESS_ALPHA, client }));
 engineMap.set(ADDRESS_BETA, new MuseEngine({ address: ADDRESS_BETA, client }));
-engineMap.set(ADDRESS_THETA, new MuseEngine({ address: ADDRESS_THETA, client }));
+// engineMap.set(ADDRESS_THETA, new MuseEngine({ address: ADDRESS_THETA, client }));
 
-engineMap.set(
-  ADDRESS_THETA,
-  new AttentionEngine({ address: ADDRESS_ATTENTION, client, engineMap })
-);
-engineMap.set(ADDRESS_IS_GOOD, new StatusEngine({ address: ADDRESS_IS_GOOD, client, engineMap }));
+// engineMap.set(
+//   ADDRESS_THETA,
+//   new AttentionEngine({ address: ADDRESS_ATTENTION, client, engineMap })
+// );
+// engineMap.set(ADDRESS_IS_GOOD, new StatusEngine({ address: ADDRESS_IS_GOOD, client, engineMap }));
 
 // note engines
 engineMap.set(
