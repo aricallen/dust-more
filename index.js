@@ -46,7 +46,7 @@ engineMap.set(
   ADDRESS_BASS,
   new NoteEngine({
     address: ADDRESS_BASS,
-    museEngine: engineMap.get(ADDRESS_GAMMA),
+    museEngine: engineMap.get(ADDRESS_ALPHA),
     client,
     noteOnProbability: NOTE_ON_PROBABILITY_BASS,
     noteOffProbability: NOTE_OFF_PROBABILITY_BASS,
@@ -71,7 +71,7 @@ engineMap.set(
   ADDRESS_SPARKLES,
   new NoteEngine({
     address: ADDRESS_SPARKLES,
-    museEngine: engineMap.get(ADDRESS_ALPHA),
+    museEngine: engineMap.get(ADDRESS_THETA),
     client,
     octaveOffset: 6,
     noteOnProbability: NOTE_ON_PROBABILITY_SPARKLES,
@@ -84,11 +84,9 @@ engineMap.set(
 const onUpdate = (msg) => {
   const { address, args: data } = osc.readMessage(msg);
   if (engineMap.has(address)) {
-    engineMap.forEach((engine) => {
-      engine.update(data);
-    });
+    engineMap.get(address).update(data);
   }
-}
+};
 
 const server = new DustMoreServer(client, LISTEN_PORT, onUpdate);
 server.start();
