@@ -4,6 +4,7 @@ const DustMoreServer = require('./lib/server.js');
 const DustMoreClient = require('./lib/client.js');
 const MuseEngine = require('./lib/muse-engine.js');
 const NoteEngine = require('./lib/note-engine.js');
+const StatusEngine = require('./lib/status-engine.js');
 const Constants = require('./lib/constants.js');
 
 const {
@@ -11,6 +12,7 @@ const {
   ADDRESS_BETA,
   ADDRESS_GAMMA,
   ADDRESS_THETA,
+  ADDRESS_IS_GOOD,
 
   ADDRESS_BASS,
   ADDRESS_PADS,
@@ -40,6 +42,7 @@ engineMap.set(ADDRESS_ALPHA, new MuseEngine({ address: ADDRESS_ALPHA, client }))
 engineMap.set(ADDRESS_BETA, new MuseEngine({ address: ADDRESS_BETA, client }));
 engineMap.set(ADDRESS_GAMMA, new MuseEngine({ address: ADDRESS_GAMMA, client }));
 engineMap.set(ADDRESS_THETA, new MuseEngine({ address: ADDRESS_THETA, client }));
+engineMap.set(ADDRESS_IS_GOOD, new StatusEngine({ address: ADDRESS_IS_GOOD, client, engineMap }));
 
 // note engines
 engineMap.set(
