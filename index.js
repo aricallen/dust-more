@@ -34,8 +34,11 @@ const {
   MAX_DURATION_PADS,
   MAX_DURATION_SPARKLES,
   OCTAVE_OFFSET_BASS,
+  OCTAVE_RANGE_BASS,
   OCTAVE_OFFSET_PADS,
+  OCTAVE_RANGE_PADS,
   OCTAVE_OFFSET_SPARKLES,
+  OCTAVE_RANGE_SPARKLES,
 } = Constants;
 
 const { LISTEN_PORT, SEND_PORT, HOST } = process.env;
@@ -45,21 +48,11 @@ const client = new DustMoreClient(HOST, SEND_PORT);
 const rootManager = new RootManager();
 
 // note engines
-const sparklesEngine = new NoteEngine({
-  address: ADDRESS_SPARKLES,
-  client,
-  octaveOffset: OCTAVE_OFFSET_SPARKLES,
-  rootManager,
-  noteOnProbability: NOTE_ON_PROBABILITY_SPARKLES,
-  noteOffProbability: NOTE_OFF_PROBABILITY_SPARKLES,
-  maxVelocity: MAX_VELOCITY_SPARKLES,
-  maxDuration: MAX_DURATION_SPARKLES,
-});
-
 const bassEngine = new NoteEngine({
   address: ADDRESS_BASS,
   client,
   octaveOffset: OCTAVE_OFFSET_BASS,
+  octaveRange: OCTAVE_RANGE_BASS,
   rootManager,
   noteOnProbability: NOTE_ON_PROBABILITY_BASS,
   noteOffProbability: NOTE_OFF_PROBABILITY_BASS,
@@ -71,11 +64,24 @@ const padsEngine = new NoteEngine({
   address: ADDRESS_PADS,
   client,
   octaveOffset: OCTAVE_OFFSET_PADS,
+  octaveRange: OCTAVE_RANGE_PADS,
   rootManager,
   noteOnProbability: NOTE_ON_PROBABILITY_PADS,
   noteOffProbability: NOTE_OFF_PROBABILITY_PADS,
   maxVelocity: MAX_VELOCITY_PADS,
   maxDuration: MAX_DURATION_PADS,
+});
+
+const sparklesEngine = new NoteEngine({
+  address: ADDRESS_SPARKLES,
+  client,
+  octaveOffset: OCTAVE_OFFSET_SPARKLES,
+  octaveRange: OCTAVE_RANGE_SPARKLES,
+  rootManager,
+  noteOnProbability: NOTE_ON_PROBABILITY_SPARKLES,
+  noteOffProbability: NOTE_OFF_PROBABILITY_SPARKLES,
+  maxVelocity: MAX_VELOCITY_SPARKLES,
+  maxDuration: MAX_DURATION_SPARKLES,
 });
 
 // muse engines
