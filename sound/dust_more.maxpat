@@ -44,7 +44,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"patching_rect" : [ 136.0, 254.0, 24.0, 24.0 ],
-					"presentation_rect" : [ 135.0, 256.0, 0.0, 0.0 ],
 					"style" : ""
 				}
 
@@ -57,7 +56,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"patching_rect" : [ 330.0, 254.0, 24.0, 24.0 ],
-					"presentation_rect" : [ 330.0, 253.0, 0.0, 0.0 ],
 					"style" : ""
 				}
 
@@ -474,13 +472,14 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-19",
+									"linecount" : 2,
 									"maxclass" : "message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 635.0, 116.0, 94.0, 22.0 ],
+									"patching_rect" : [ 635.0, 116.0, 94.0, 35.0 ],
 									"style" : "",
-									"text" : "19"
+									"text" : "12. 11.978211 1134.602783"
 								}
 
 							}
@@ -859,9 +858,9 @@
 									"maxclass" : "newobj",
 									"numinlets" : 3,
 									"numoutlets" : 0,
-									"patching_rect" : [ 58.0, 254.0, 69.0, 22.0 ],
+									"patching_rect" : [ 58.0, 253.0, 132.0, 22.0 ],
 									"style" : "",
-									"text" : "noteout 3"
+									"text" : "noteout \"from Max 1\" 3"
 								}
 
 							}
@@ -1276,7 +1275,7 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-22",
-					"items" : [ "IAC Driver DustTunnel", ",", "to Max 1", ",", "to Max 2" ],
+					"items" : [ "IAC Driver DustTunnel", ",", "to Max 1", ",", "to Max 2", ",", "USB Axiom 49 Port 1", ",", "USB Axiom 49 Port 2" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -1360,15 +1359,16 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-10",
 									"maxclass" : "newobj",
 									"numinlets" : 3,
 									"numoutlets" : 0,
-									"patching_rect" : [ 58.0, 263.0, 61.0, 22.0 ],
+									"patching_rect" : [ 58.0, 263.0, 132.0, 22.0 ],
 									"style" : "",
-									"text" : "noteout 2"
+									"text" : "noteout \"from Max 1\" 2"
 								}
 
 							}
@@ -1744,6 +1744,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-15",
@@ -1751,8 +1752,9 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 218.0, 29.0, 50.0, 22.0 ],
-									"style" : ""
+									"patching_rect" : [ 218.0, 29.0, 156.0, 22.0 ],
+									"style" : "",
+									"text" : "12. 11.978211 1134.602783"
 								}
 
 							}
@@ -1775,9 +1777,9 @@
 									"maxclass" : "newobj",
 									"numinlets" : 3,
 									"numoutlets" : 0,
-									"patching_rect" : [ 58.0, 273.0, 61.0, 22.0 ],
+									"patching_rect" : [ 58.0, 273.0, 132.0, 22.0 ],
 									"style" : "",
-									"text" : "noteout 1"
+									"text" : "noteout \"from Max 1\" 1"
 								}
 
 							}
@@ -1828,7 +1830,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 262.0, 176.0, 50.0, 22.0 ],
 									"style" : "",
-									"text" : "8"
+									"text" : "11"
 								}
 
 							}
@@ -1841,7 +1843,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 318.0, 176.0, 50.0, 22.0 ],
 									"style" : "",
-									"text" : "256"
+									"text" : "1134"
 								}
 
 							}

@@ -70,21 +70,16 @@ const padsEngine = new NoteEngine({
 
 // muse engines
 engineMap.set(ADDRESS_GAMMA, new MuseEngine({ address: ADDRESS_GAMMA, client }));
-// engineMap.set(
-//   ADDRESS_ALPHA,
-//   new MuseEngine({ address: ADDRESS_ALPHA, client, noteEngine: bassEngine })
-// );
-// engineMap.set(
-//   ADDRESS_BETA,
-//   new MuseEngine({ address: ADDRESS_BETA, client, noteEngine: padsEngine })
-// );
-engineMap.set(
-  ADDRESS_THETA,
-  new MuseEngine({ address: ADDRESS_THETA, client, noteEngine: sparklesEngine })
-);
+engineMap.set(ADDRESS_ALPHA, new MuseEngine({ address: ADDRESS_ALPHA, client }));
+engineMap.set(ADDRESS_BETA, new MuseEngine({ address: ADDRESS_BETA, client }));
+engineMap.set(ADDRESS_THETA, new MuseEngine({ address: ADDRESS_THETA, client }));
+
+engineMap.set(`${ADDRESS_ALPHA}_sound`, bassEngine);
+engineMap.set(`${ADDRESS_BETA}_sound`, padsEngine);
+engineMap.set(`${ADDRESS_THETA}_sound`, sparklesEngine);
 
 engineMap.set(
-  ADDRESS_THETA,
+  ADDRESS_ATTENTION,
   new AttentionEngine({ address: ADDRESS_ATTENTION, client, engineMap })
 );
 engineMap.set(ADDRESS_IS_GOOD, new StatusEngine({ address: ADDRESS_IS_GOOD, client, engineMap }));
@@ -92,7 +87,12 @@ engineMap.set(ADDRESS_IS_GOOD, new StatusEngine({ address: ADDRESS_IS_GOOD, clie
 const onUpdate = (msg) => {
   const { address, args: data } = osc.readMessage(msg);
   if (engineMap.has(address)) {
-    engineMap.get(address).update(data);
+    const engine = engineMap.get(address);
+    engine.update(data);
+    if (engineMap.has(`${address}_sound`)) {
+      engineMap.get(`${address}_sound`).update(engine.getLatest());
+    }
+    engineMap.get(ADDRESS_ATTENTION).update(data);
   }
 };
 
