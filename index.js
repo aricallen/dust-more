@@ -33,6 +33,9 @@ const {
   MAX_DURATION_BASS,
   MAX_DURATION_PADS,
   MAX_DURATION_SPARKLES,
+  OCTAVE_OFFSET_BASS,
+  OCTAVE_OFFSET_PADS,
+  OCTAVE_OFFSET_SPARKLES,
 } = Constants;
 
 const { LISTEN_PORT, SEND_PORT, HOST } = process.env;
@@ -45,7 +48,7 @@ const rootManager = new RootManager();
 const sparklesEngine = new NoteEngine({
   address: ADDRESS_SPARKLES,
   client,
-  octaveOffset: 6,
+  octaveOffset: OCTAVE_OFFSET_SPARKLES,
   rootManager,
   noteOnProbability: NOTE_ON_PROBABILITY_SPARKLES,
   noteOffProbability: NOTE_OFF_PROBABILITY_SPARKLES,
@@ -56,6 +59,7 @@ const sparklesEngine = new NoteEngine({
 const bassEngine = new NoteEngine({
   address: ADDRESS_BASS,
   client,
+  octaveOffset: OCTAVE_OFFSET_BASS,
   rootManager,
   noteOnProbability: NOTE_ON_PROBABILITY_BASS,
   noteOffProbability: NOTE_OFF_PROBABILITY_BASS,
@@ -66,7 +70,7 @@ const bassEngine = new NoteEngine({
 const padsEngine = new NoteEngine({
   address: ADDRESS_PADS,
   client,
-  octaveOffset: 3,
+  octaveOffset: OCTAVE_OFFSET_PADS,
   rootManager,
   noteOnProbability: NOTE_ON_PROBABILITY_PADS,
   noteOffProbability: NOTE_OFF_PROBABILITY_PADS,
@@ -96,7 +100,7 @@ const onUpdate = (msg) => {
     const engine = engineMap.get(address);
     engine.update(data);
     if (engineMap.has(`${address}_sound`)) {
-      engineMap.get(`${address}_sound`).update(engine.getLatest());
+      engineMap.get(`${address}_sound`).update(engine.getLatestNormalized());
     }
     engineMap.get(ADDRESS_ATTENTION).update(data);
   }
