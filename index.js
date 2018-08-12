@@ -7,6 +7,7 @@ const NoteEngine = require('./lib/note-engine.js');
 const StatusEngine = require('./lib/status-engine.js');
 const AttentionEngine = require('./lib/attention-engine.js');
 const Constants = require('./lib/constants.js');
+const RootManager = require('./lib/root-manager.js');
 
 const {
   ADDRESS_ALPHA,
@@ -38,30 +39,35 @@ const { LISTEN_PORT, SEND_PORT, HOST } = process.env;
 
 const engineMap = new Map();
 const client = new DustMoreClient(HOST, SEND_PORT);
+const rootManager = new RootManager();
 
 // note engines
 const sparklesEngine = new NoteEngine({
   address: ADDRESS_SPARKLES,
   client,
   octaveOffset: 6,
+  rootManager,
   noteOnProbability: NOTE_ON_PROBABILITY_SPARKLES,
   noteOffProbability: NOTE_OFF_PROBABILITY_SPARKLES,
   maxVelocity: MAX_VELOCITY_SPARKLES,
   maxDuration: MAX_DURATION_SPARKLES,
 });
-// note engines
+
 const bassEngine = new NoteEngine({
   address: ADDRESS_BASS,
   client,
+  rootManager,
   noteOnProbability: NOTE_ON_PROBABILITY_BASS,
   noteOffProbability: NOTE_OFF_PROBABILITY_BASS,
   maxVelocity: MAX_VELOCITY_BASS,
   maxDuration: MAX_DURATION_BASS,
 });
+
 const padsEngine = new NoteEngine({
   address: ADDRESS_PADS,
   client,
   octaveOffset: 3,
+  rootManager,
   noteOnProbability: NOTE_ON_PROBABILITY_PADS,
   noteOffProbability: NOTE_OFF_PROBABILITY_PADS,
   maxVelocity: MAX_VELOCITY_PADS,
