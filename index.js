@@ -9,7 +9,6 @@ const StatusEngine = require('./lib/status-engine.js');
 const AttentionEngine = require('./lib/attention-engine.js');
 const Constants = require('./lib/constants.js');
 const RootManager = require('./lib/root-manager.js');
-const StatusManager = require('./lib/status-manager.js');
 
 const {
   ADDRESS_ALPHA,
@@ -114,7 +113,8 @@ engineMap.set(
   ADDRESS_ATTENTION,
   new AttentionEngine({ address: ADDRESS_ATTENTION, client, engineMap })
 );
-engineMap.set(ADDRESS_IS_GOOD, new StatusEngine({ address: ADDRESS_IS_GOOD, client, engineMap }));
+const statusEngine = new StatusEngine({ address: ADDRESS_IS_GOOD, client, engineMap });
+engineMap.set(ADDRESS_IS_GOOD, statusEngine);
 
 const cleanup = () => {
   engineMap.forEach((engine) => engine.reset());
@@ -126,17 +126,23 @@ const cleanup = () => {
 
 const onUpdate = (msg) => {
   const { address, args: data } = osc.readMessage(msg);
-  if (engineMap.has(address)) {
-    const engine = engineMap.get(address);
-    engine.update(data);
-    if (engineMap.has(`${address}_sound`)) {
-      engineMap.get(`${address}_sound`).update(engine.getLatestNormalized());
-    }
-    engineMap.get(ADDRESS_ATTENTION).update(data);
+  if (address === statusEngine.getAddress()) {
+    statusEngine.update(data);
   }
-  // always update light engine
-  lightEngineAlpha.update(engineMap.get(ADDRESS_ALPHA).getLatestNormalized());
-  lightEngineBeta.update(engineMap.get(ADDRESS_BETA).getLatestNormalized());
+
+  if (statusEngine.isTransmitting()) {
+    if (engineMap.has(address)) {
+      const engine = engineMap.get(address);
+      engine.update(data);
+      if (engineMap.has(`${address}_sound`)) {
+        engineMap.get(`${address}_sound`).update(engine.getLatestNormalized());
+      }
+      // attention and lights get updated on all inputs
+      engineMap.get(ADDRESS_ATTENTION).update(data);
+      lightEngineAlpha.update(engineMap.get(ADDRESS_ALPHA).getLatestNormalized());
+      lightEngineBeta.update(engineMap.get(ADDRESS_BETA).getLatestNormalized());
+    }
+  }
 };
 
 const server = new DustMoreServer(client, MUSE_LISTEN_PORT, onUpdate);
