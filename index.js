@@ -9,6 +9,7 @@ const StatusEngine = require('./lib/status-engine.js');
 const AttentionEngine = require('./lib/attention-engine.js');
 const Constants = require('./lib/constants.js');
 const RootManager = require('./lib/root-manager.js');
+const StatusManager = require('./lib/status-manager.js');
 
 const {
   ADDRESS_ALPHA,
@@ -79,8 +80,8 @@ const padsEngine = new NoteEngine({
   rootManager,
   noteOnProbability: NOTE_ON_PROBABILITY_PADS,
   noteOffProbability: NOTE_OFF_PROBABILITY_PADS,
-  maxVelocity: MAX_VELOCITY_PADS,
   minVelocity: MIN_VELOCITY_PADS,
+  maxVelocity: MAX_VELOCITY_PADS,
   maxDuration: MAX_DURATION_PADS,
   notesAtATime: 5,
 });
@@ -115,6 +116,14 @@ engineMap.set(
 );
 engineMap.set(ADDRESS_IS_GOOD, new StatusEngine({ address: ADDRESS_IS_GOOD, client, engineMap }));
 
+const cleanup = () => {
+  engineMap.forEach((engine) => engine.reset());
+  lightEngineAlpha.reset();
+  lightEngineBeta.reset();
+  console.log('cleaning up...');
+  process.exit(0);
+};
+
 const onUpdate = (msg) => {
   const { address, args: data } = osc.readMessage(msg);
   if (engineMap.has(address)) {
@@ -132,12 +141,6 @@ const onUpdate = (msg) => {
 
 const server = new DustMoreServer(client, MUSE_LISTEN_PORT, onUpdate);
 server.start();
-
-const cleanup = () => {
-  engineMap.forEach((engine) => engine.reset());
-  console.log('cleaning up...');
-  process.exit(0);
-};
 
 process.on('exit', cleanup);
 process.on('error', cleanup);
