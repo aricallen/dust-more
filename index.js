@@ -27,6 +27,9 @@ const {
   NOTE_OFF_PROBABILITY_PADS,
   NOTE_ON_PROBABILITY_SPARKLES,
   NOTE_OFF_PROBABILITY_SPARKLES,
+  MIN_VELOCITY_BASS,
+  MIN_VELOCITY_PADS,
+  MIN_VELOCITY_SPARKLES,
   MAX_VELOCITY_BASS,
   MAX_VELOCITY_PADS,
   MAX_VELOCITY_SPARKLES,
@@ -56,6 +59,7 @@ const bassEngine = new NoteEngine({
   rootManager,
   noteOnProbability: NOTE_ON_PROBABILITY_BASS,
   noteOffProbability: NOTE_OFF_PROBABILITY_BASS,
+  minVelocity: MIN_VELOCITY_BASS,
   maxVelocity: MAX_VELOCITY_BASS,
   maxDuration: MAX_DURATION_BASS,
 });
@@ -69,7 +73,9 @@ const padsEngine = new NoteEngine({
   noteOnProbability: NOTE_ON_PROBABILITY_PADS,
   noteOffProbability: NOTE_OFF_PROBABILITY_PADS,
   maxVelocity: MAX_VELOCITY_PADS,
+  minVelocity: MIN_VELOCITY_PADS,
   maxDuration: MAX_DURATION_PADS,
+  notesAtATime: 5,
 });
 
 const sparklesEngine = new NoteEngine({
@@ -80,8 +86,10 @@ const sparklesEngine = new NoteEngine({
   rootManager,
   noteOnProbability: NOTE_ON_PROBABILITY_SPARKLES,
   noteOffProbability: NOTE_OFF_PROBABILITY_SPARKLES,
+  minVelocity: MIN_VELOCITY_SPARKLES,
   maxVelocity: MAX_VELOCITY_SPARKLES,
   maxDuration: MAX_DURATION_SPARKLES,
+  notesAtATime: 6,
 });
 
 // muse engines
