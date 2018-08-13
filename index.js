@@ -2,6 +2,7 @@ require('dotenv').config();
 const osc = require('osc');
 const DustMoreServer = require('./lib/server.js');
 const DustMoreClient = require('./lib/client.js');
+const LightEngine = require('./lib/light-engine.js');
 const MuseEngine = require('./lib/muse-engine.js');
 const NoteEngine = require('./lib/note-engine.js');
 const StatusEngine = require('./lib/status-engine.js');
@@ -20,6 +21,9 @@ const {
   ADDRESS_BASS,
   ADDRESS_PADS,
   ADDRESS_SPARKLES,
+
+  ADDRESS_LIGHT_ALPHA,
+  ADDRESS_LIGHT_BETA,
 
   NOTE_ON_PROBABILITY_BASS,
   NOTE_OFF_PROBABILITY_BASS,
@@ -44,11 +48,14 @@ const {
   OCTAVE_RANGE_SPARKLES,
 } = Constants;
 
-const { LISTEN_PORT, SEND_PORT, HOST } = process.env;
+const { MUSE_LISTEN_PORT, MAX_SEND_PORT, LOCALHOST, PI_HOST, PI_PORT } = process.env;
 
 const engineMap = new Map();
-const client = new DustMoreClient(HOST, SEND_PORT);
+const client = new DustMoreClient(LOCALHOST, MAX_SEND_PORT);
+const lightClient = new DustMoreClient(PI_HOST, PI_PORT);
 const rootManager = new RootManager();
+const lightEngineAlpha = new LightEngine({ client: lightClient, address: ADDRESS_LIGHT_ALPHA });
+const lightEngineBeta = new LightEngine({ client: lightClient, address: ADDRESS_LIGHT_BETA });
 
 // note engines
 const bassEngine = new NoteEngine({
@@ -118,9 +125,12 @@ const onUpdate = (msg) => {
     }
     engineMap.get(ADDRESS_ATTENTION).update(data);
   }
+  // always update light engine
+  lightEngineAlpha.update(engineMap.get(ADDRESS_ALPHA).getLatestNormalized());
+  lightEngineBeta.update(engineMap.get(ADDRESS_BETA).getLatestNormalized());
 };
 
-const server = new DustMoreServer(client, LISTEN_PORT, onUpdate);
+const server = new DustMoreServer(client, MUSE_LISTEN_PORT, onUpdate);
 server.start();
 
 const cleanup = () => {

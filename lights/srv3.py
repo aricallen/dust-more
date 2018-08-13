@@ -87,7 +87,7 @@ def strobe_render(dmx, freq, intensity):
     print("freq {0} int {1}".format(freq, intensity))
     dmx.setChannel(1, int(freq)%256)
     dmx.setChannel(2, int(intensity)%256)
-    dmx.render()    
+    dmx.render()
 
 def strobe_handler(unused_addr, args, freq, intensity):
     dmx = args[0]
@@ -98,7 +98,7 @@ def strobe_oneshothandler(unused_addr, args, intensity):
 
     if intensity != 0:
         strobe_render(dmx, 255, 255*(intensity%1.0))
-        time.sleep(0.038)    
+        time.sleep(0.038)
         strobe_render(dmx, 0, 0)
 
 def strobe_burstdone(dmx):
@@ -127,7 +127,7 @@ class mind:
         self.a   = 0
         self.b   = 0
 
-def mindwave_handler_state(unused_addr, args):    
+def mindwave_handler_state(unused_addr, args):
     sharedMindState = args[0]
     state = args[1]
     sharedMindState.state = state
@@ -279,7 +279,8 @@ def serve_osc(l, sharedMindState, setting):
         timeout= int(setting.timeout)
         satLimit= setting.satlimit
         value  = setting.value
-        
+        print_time = int(time.time())
+
         m.program = sharedMindState.program
         m.a = sharedMindState.a
         m.b = sharedMindState.b
@@ -377,12 +378,12 @@ def serve_osc(l, sharedMindState, setting):
                     dur = 60
                 updateStringAB(l, m, nLEDs, dur/60)
             elif m.program == 0:
-
-
                 #m.a = 0
                 #m.b = 1
-                print("a {0}  b {1}\n".format(m.a, m.b))
                 updateStringAB(l, m, nLEDs, 1)
+                if int(time.time()) != print_time:
+                    print("a {0}  b {1}\n".format(m.a, m.b))
+                    print_time = time.time()
                 time.sleep(0.01)
             elif m.program == 3:
                 dur = time.time()-progstart
@@ -445,9 +446,9 @@ if __name__ == "__main__":
   disp.map("/mindwave/1/scanning", mindwave_handler_state, sharedMindState, MW_SCANNING)
   disp.map("/mindwave/1/denied",   mindwave_handler_state, sharedMindState, MW_DENIED)
   client = UDPClient(args.ip, args.port)
-  send_settings(client, setting) 
+  send_settings(client, setting)
 
-  dmx = None 
+  dmx = None
   try:
       dmx = DmxPy('/dev/serial/by-id/usb-DMXking.com_DMX_USB_PRO_6AYP9P66-if00-port0')
   except:
