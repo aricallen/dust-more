@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "sh startup.sh",
+    "start:dev": "node index.js",
     "dev": "npm run stream && npm run start",
-    "stream": "muse-player -f data/muselab_recording.muse -s osc.udp://127.0.0.1:4224",
+    "stream:dev": "muse-player -f data/muselab_recording.muse -s osc.udp://127.0.0.1:4224",
+    "stream": "muse-io --device Muse-98A9 --osc osc.udp://localhost:4224",
     "sketch": "node local/sketch.js",
     "test": "tape-watch tests/*.js tests/**/*.js | faucet"
   },
