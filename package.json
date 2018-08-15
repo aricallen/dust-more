@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "sh startup.sh",
-    "start:dev": "node index.js",
+    "start": "sh scripts/startup.sh",
+    "startup:dev": "sh scripts/startup-dev.sh --lights=true",
+    "startup:dev:no-lights": "sh scripts/startup-dev.sh",
     "dev": "npm run stream && npm run start",
     "stream:dev": "muse-player -f data/muselab_recording.muse -s osc.udp://127.0.0.1:4224",
     "stream": "muse-io --device Muse-98A9 --osc osc.udp://localhost:4224",

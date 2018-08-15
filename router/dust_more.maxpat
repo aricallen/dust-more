@@ -1864,7 +1864,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 871.0, 116.0, 94.0, 22.0 ],
 									"style" : "",
-									"text" : "98. 86. 240."
+									"text" : "125. 117. 240."
 								}
 
 							}
@@ -1877,7 +1877,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 744.0, 116.0, 94.0, 22.0 ],
 									"style" : "",
-									"text" : "115. 53. 968."
+									"text" : "91. 62. 1462."
 								}
 
 							}
@@ -1890,7 +1890,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 635.0, 116.0, 94.0, 22.0 ],
 									"style" : "",
-									"text" : "74. 61. 1716."
+									"text" : "75. 72. 2479."
 								}
 
 							}
@@ -2241,7 +2241,6 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
-						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-11",
@@ -2390,7 +2389,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 262.0, 171.0, 50.0, 22.0 ],
 									"style" : "",
-									"text" : "86"
+									"text" : "117"
 								}
 
 							}
@@ -2416,7 +2415,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 205.0, 171.0, 50.0, 22.0 ],
 									"style" : "",
-									"text" : "98"
+									"text" : "125"
 								}
 
 							}
@@ -3080,7 +3079,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 262.0, 174.0, 50.0, 22.0 ],
 									"style" : "",
-									"text" : "53"
+									"text" : "62"
 								}
 
 							}
@@ -3093,7 +3092,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 318.0, 174.0, 50.0, 22.0 ],
 									"style" : "",
-									"text" : "968"
+									"text" : "1462"
 								}
 
 							}
@@ -3106,7 +3105,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 205.0, 174.0, 50.0, 22.0 ],
 									"style" : "",
-									"text" : "115"
+									"text" : "91"
 								}
 
 							}
@@ -3706,7 +3705,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 262.0, 176.0, 50.0, 22.0 ],
 									"style" : "",
-									"text" : "61"
+									"text" : "72"
 								}
 
 							}
@@ -3719,7 +3718,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 318.0, 176.0, 50.0, 22.0 ],
 									"style" : "",
-									"text" : "1716"
+									"text" : "2479"
 								}
 
 							}
@@ -3732,7 +3731,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 205.0, 176.0, 50.0, 22.0 ],
 									"style" : "",
-									"text" : "74"
+									"text" : "75"
 								}
 
 							}
