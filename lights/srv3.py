@@ -32,6 +32,8 @@ class UDPClient(object):
     self._sock.setblocking(0)
     self._address = address
     self._port = port
+    print("listening on ip    : {0}\n"
+          "listening on port  : {1}\n".format(address, port))
 
   def send(self, content):
     """Sends an OscBundle or OscMessage to the server."""
