@@ -139,9 +139,9 @@ const onUpdate = (msg) => {
       }
       // attention and lights get updated on all inputs
       engineMap.get(ADDRESS_ATTENTION).update(data);
-      lightEngineAlpha.update(engineMap.get(ADDRESS_ALPHA).getLatestNormalized());
-      lightEngineBeta.update(engineMap.get(ADDRESS_BETA).getLatestNormalized());
     }
+    lightEngineAlpha.update(engineMap.get(ADDRESS_ALPHA).getLatestNormalized() || 0);
+    lightEngineBeta.update(engineMap.get(ADDRESS_BETA).getLatestNormalized() || 0);
   }
 };
 
