@@ -2,6 +2,7 @@
 
 ## Running
 
+* install MuseIO tools (see below)
 * `npm run startup`
 * make sure logic tracks are all in record mode (the R in arrange track is "armed" or red)
 * make sure control surfaces are for "from Max 1" (option + shift + k)

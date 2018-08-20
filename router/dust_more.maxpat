@@ -4,12 +4,12 @@
 		"appversion" : 		{
 			"major" : 7,
 			"minor" : 3,
-			"revision" : 5,
+			"revision" : 4,
 			"architecture" : "x86",
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 436.0, 78.0, 952.0, 938.0 ],
+		"rect" : [ 436.0, 79.0, 952.0, 938.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -47,7 +47,7 @@
 						"appversion" : 						{
 							"major" : 7,
 							"minor" : 3,
-							"revision" : 5,
+							"revision" : 4,
 							"architecture" : "x86",
 							"modernui" : 1
 						}
@@ -438,7 +438,7 @@
 						"appversion" : 						{
 							"major" : 7,
 							"minor" : 3,
-							"revision" : 5,
+							"revision" : 4,
 							"architecture" : "x86",
 							"modernui" : 1
 						}
@@ -547,7 +547,7 @@
 										"appversion" : 										{
 											"major" : 7,
 											"minor" : 3,
-											"revision" : 5,
+											"revision" : 4,
 											"architecture" : "x86",
 											"modernui" : 1
 										}
@@ -1766,12 +1766,12 @@
 						"appversion" : 						{
 							"major" : 7,
 							"minor" : 3,
-							"revision" : 5,
+							"revision" : 4,
 							"architecture" : "x86",
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 492.0, 78.0, 1022.0, 651.0 ],
+						"rect" : [ 384.0, 79.0, 1022.0, 651.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -2209,7 +2209,7 @@
 						"appversion" : 						{
 							"major" : 7,
 							"minor" : 3,
-							"revision" : 5,
+							"revision" : 4,
 							"architecture" : "x86",
 							"modernui" : 1
 						}
@@ -2821,7 +2821,7 @@
 						"appversion" : 						{
 							"major" : 7,
 							"minor" : 3,
-							"revision" : 5,
+							"revision" : 4,
 							"architecture" : "x86",
 							"modernui" : 1
 						}
@@ -3447,7 +3447,7 @@
 						"appversion" : 						{
 							"major" : 7,
 							"minor" : 3,
-							"revision" : 5,
+							"revision" : 4,
 							"architecture" : "x86",
 							"modernui" : 1
 						}
@@ -4409,28 +4409,28 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "smoother.maxpat",
-				"bootpath" : "~/Developer/Mindwerk/2018/dust-more/router",
+				"bootpath" : "~/Desktop/dust-more/router",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "number_switch.js",
-				"bootpath" : "~/Developer/Mindwerk/2018/dust-more/router",
+				"bootpath" : "~/Desktop/dust-more/router",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "should_reset.maxpat",
-				"bootpath" : "~/Developer/Mindwerk/2018/dust-more/router",
+				"bootpath" : "~/Desktop/dust-more/router",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "random_router.js",
-				"bootpath" : "~/Developer/Mindwerk/2018/dust-more/router",
+				"bootpath" : "~/Desktop/dust-more/router",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
