@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "startup": "sh scripts/startup.sh",
     "startup:dev": "sh scripts/startup-dev.sh --lights=true",
     "startup:dev:no-lights": "sh scripts/startup-dev.sh",
