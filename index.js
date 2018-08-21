@@ -139,9 +139,15 @@ const onUpdate = (msg) => {
       }
       // attention and lights get updated on all inputs
       engineMap.get(ADDRESS_ATTENTION).update(data);
+      
+      const alphaLightValue = engineMap.get(ADDRESS_ALPHA).getLatestNormalized() || 0;
+      lightEngineAlpha.update(alphaLightValue);
+      console.log(`alpha light = ${alphaLightValue}`);
+      
+      const betaLightValue = engineMap.get(ADDRESS_BETA).getLatestNormalized() || 0;
+      lightEngineBeta.update(betaLightValue);
+      console.log(`beta light = ${betaLightValue}`);
     }
-    lightEngineAlpha.update(engineMap.get(ADDRESS_ALPHA).getLatestNormalized() || 0);
-    lightEngineBeta.update(engineMap.get(ADDRESS_BETA).getLatestNormalized() || 0);
   }
 };
 
